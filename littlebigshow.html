@@ -185,7 +185,8 @@ body{margin:0;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:an
 .bksvg{display:block;width:100%;min-width:900px;height:auto}
 .bklbl{fill:var(--ink);font-family:var(--display);font-size:15px;letter-spacing:.04em;text-transform:uppercase}
 .bkbox{fill:#fff;stroke:var(--line);stroke-width:1.5}.bkdiv{stroke:var(--line);stroke-width:1}
-.bkslot{fill:var(--muted);font-family:var(--mono);font-size:12px}
+.bkslot{fill:var(--ink-soft);font-family:var(--mono);font-size:11px}
+.bkflag{border-radius:2px}
 .bkseed{fill:var(--blue-deep);font-family:var(--mono);font-weight:700;font-size:12px}
 .bkchamp .bkbox{fill:var(--blue-soft);stroke:var(--blue)}.bkchamp .bkslot{fill:var(--ink-on-blue);font-weight:700}
 .bkslot.tbd{fill:var(--muted);font-style:italic}
@@ -202,6 +203,7 @@ body{margin:0;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:an
 .wildwrap{margin-top:4px;max-width:460px}
 .wildcard-card{border:2px solid var(--blue-deep)}
 .wildcard-card .gtable td .pos{font-weight:700}
+.wildcard-card .grp-tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;background:var(--blue-soft);color:var(--ink-on-blue);border:1px solid var(--blue-deep);border-radius:999px;padding:2px 7px;margin-right:9px;white-space:nowrap;vertical-align:middle}
 .gcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow-sm)}
 .gcard h4{margin:0;padding:11px 14px;background:var(--ink);color:#fff;font-family:var(--display);font-size:18px;letter-spacing:.05em;text-transform:uppercase}
 .gcard h4 .await{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:#9fb6c6;float:right;margin-top:5px;text-transform:uppercase}
@@ -575,7 +577,7 @@ const COMPETITIONS={
 };
 
 /* ============ STATIC DATA ============ */
-const ISO = {"Japan": "jp", "South Korea": "kr", "Australia": "au", "China": "cn", "Saudi Arabia": "sa", "Qatar": "qa", "Uzbekistan": "uz", "Jordan": "jo", "Iraq": "iq", "UAE": "ae", "Morocco": "ma", "Senegal": "sn", "Egypt": "eg", "Algeria": "dz", "Ghana": "gh", "Côte d’Ivoire": "ci", "South Africa": "za", "Tunisia": "tn", "Cape Verde": "cv", "Nigeria": "ng", "Cameroon": "cm", "DR Congo": "cd", "Mali": "ml", "Burkina Faso": "bf", "Zambia": "zm", "Uganda": "ug", "Angola": "ao", "Guinea": "gn", "Madagascar": "mg", "Tanzania": "tz", "United States": "us", "Mexico": "mx", "Canada": "ca", "Costa Rica": "cr", "Panama": "pa", "Jamaica": "jm", "Honduras": "hn", "El Salvador": "sv", "Guatemala": "gt", "Trinidad and Tobago": "tt", "Haiti": "ht", "Curaçao": "cw", "Nicaragua": "ni", "Suriname": "sr", "Antigua and Barbuda": "ag", "Dominican Republic": "do", "St. Kitts and Nevis": "kn", "Belize": "bz", "Grenada": "gd", "Barbados": "bb", "Argentina": "ar", "Brazil": "br", "Uruguay": "uy", "Colombia": "co", "Ecuador": "ec", "Peru": "pe", "Chile": "cl", "Paraguay": "py", "Venezuela": "ve", "Bolivia": "bo", "New Zealand": "nz", "Fiji": "fj", "Solomon Islands": "sb", "Tahiti": "pf", "Vanuatu": "vu", "Papua New Guinea": "pg", "New Caledonia": "nc", "Samoa": "ws", "Tonga": "to", "Cook Islands": "ck", "England": "gb-eng", "France": "fr", "Germany": "de", "Spain": "es", "Italy": "it", "Portugal": "pt", "Netherlands": "nl", "Belgium": "be", "Croatia": "hr", "Switzerland": "ch", "Denmark": "dk", "Sweden": "se", "Norway": "no", "Poland": "pl", "Austria": "at", "Czech Republic": "cz", "Serbia": "rs", "Turkey": "tr", "Ukraine": "ua", "Scotland": "gb-sct",
+const ISO = {"Japan": "jp", "South Korea": "kr", "Australia": "au", "China": "cn", "Saudi Arabia": "sa", "Qatar": "qa", "Uzbekistan": "uz", "Jordan": "jo", "Iraq": "iq", "UAE": "ae", "Morocco": "ma", "Senegal": "sn", "Egypt": "eg", "Algeria": "dz", "Ghana": "gh", "Côte d’Ivoire": "ci", "South Africa": "za", "Tunisia": "tn", "Cape Verde": "cv", "Nigeria": "ng", "Cameroon": "cm", "DR Congo": "cd", "Mali": "ml", "Burkina Faso": "bf", "Zambia": "zm", "Uganda": "ug", "Angola": "ao", "Guinea": "gn", "Madagascar": "mg", "Tanzania": "tz", "United States": "us", "Mexico": "mx", "Canada": "ca", "Costa Rica": "cr", "Panama": "pa", "Jamaica": "jm", "Honduras": "hn", "El Salvador": "sv", "Guatemala": "gt", "Trinidad and Tobago": "tt", "Haiti": "ht", "Curaçao": "cw", "Nicaragua": "ni", "Suriname": "sr", "Antigua and Barbuda": "ag", "Dominican Republic": "do", "St. Kitts and Nevis": "kn", "Belize": "bz", "Grenada": "gd", "Barbados": "bb", "Argentina": "ar", "Brazil": "br", "Uruguay": "uy", "Colombia": "co", "Ecuador": "ec", "Peru": "pe", "Chile": "cl", "Paraguay": "py", "Venezuela": "ve", "Bolivia": "bo", "New Zealand": "nz", "Fiji": "fj", "Solomon Islands": "sb", "Tahiti": "pf", "Vanuatu": "vu", "Papua New Guinea": "pg", "New Caledonia": "nc", "Samoa": "ws", "Tonga": "to", "Cook Islands": "ck", "England": "gb-eng", "France": "fr", "Germany": "de", "Spain": "es", "Italy": "it", "Portugal": "pt", "Netherlands": "nl", "Belgium": "be", "Croatia": "hr", "Switzerland": "ch", "Denmark": "dk", "Sweden": "se", "Norway": "no", "Poland": "pl", "Austria": "at", "Czech Republic": "cz", "Serbia": "rs", "Turkey": "tr", "Türkiye": "tr", "Turkiye": "tr", "Ukraine": "ua", "Scotland": "gb-sct",
 "USA": "us", "U.S.A.": "us", "United States of America": "us", "Wales": "gb-wls", "Czechia": "cz", "Czech Republic": "cz",
 "Congo DR": "cd", "DR Congo": "cd", "Congo": "cg", "Ivory Coast": "ci", "Cote d'Ivoire": "ci", "Côte d'Ivoire": "ci", "Côte d’Ivoire": "ci",
 "Northern Ireland": "gb-nir", "Republic of Ireland": "ie", "Ireland": "ie", "Russia": "ru", "Greece": "gr", "Romania": "ro",
@@ -1273,27 +1275,77 @@ function parseTKWStandingsGroups(grid){
 const BRACKET_ROUND_DEFS=[
   {name:'Round of 32',games:16},{name:'Round of 16',games:8},
   {name:'Quarterfinals',games:4},{name:'Semifinals',games:2},{name:'Final',games:1}];
+// header text variants -> canonical round name
+function canonRoundName(lv){
+  lv=lv.toLowerCase().replace(/[\s.\-]/g,'');
+  if(lv==='roundof32'||lv==='r32')return 'Round of 32';
+  if(lv==='roundof16'||lv==='r16')return 'Round of 16';
+  if(lv==='quarterfinals'||lv==='quarterfinal'||lv==='qf'||lv==='quarters')return 'Quarterfinals';
+  if(lv==='semifinals'||lv==='semifinal'||lv==='sf'||lv==='semis')return 'Semifinals';
+  if(lv==='final'||lv==='finals'||lv==='championship')return 'Final';
+  return null;
+}
 function parseTKWBracketGrid(grid){
   const at=(r,c)=>(grid[r]&&grid[r][c]!=null)?String(grid[r][c]).trim():'';
+  // locate the bracket header row (the one containing "Round of 32")
   let hdrRow=-1;
-  for(let r=0;r<grid.length;r++){if((grid[r]||[]).some(v=>String(v||'').trim().toLowerCase()==='round of 32')){hdrRow=r;break;}}
+  for(let r=0;r<grid.length;r++){if((grid[r]||[]).some(v=>/round\s*of\s*32/i.test(String(v||'')))){hdrRow=r;break;}}
   if(hdrRow<0)return null;
-  const row=grid[hdrRow]||[];const roundLabels=BRACKET_ROUND_DEFS.map(d=>d.name.toLowerCase());
-  const entries=[];
-  for(let c=0;c<row.length;c++){const v=at(hdrRow,c),lv=v.toLowerCase();
-    if(roundLabels.includes(lv))entries.push({col:c,label:v,score:false});
-    else if(lv==='score')entries.push({col:c,label:'Score',score:true});}
+  const hrow=grid[hdrRow]||[];
+  // map each round header to its team column + score column
+  const roundCols=[];
+  for(let c=0;c<hrow.length;c++){
+    const canon=canonRoundName(at(hdrRow,c));
+    if(!canon)continue;
+    let scoreCol=-1;
+    for(let cc=c+1;cc<Math.min(hrow.length,c+4);cc++){if(/^score$/i.test(at(hdrRow,cc))){scoreCol=cc;break;}
+      if(canonRoundName(at(hdrRow,cc)))break;}
+    let teamCol;
+    if(scoreCol>-1){teamCol=scoreCol-1;}
+    else{
+      // Final: no score column — find the column at/after header that holds team text below
+      teamCol=c;
+      for(let cc=c;cc<Math.min(hrow.length,c+3);cc++){
+        for(let rr=hdrRow+1;rr<Math.min(grid.length,hdrRow+40);rr++){
+          const v=at(rr,cc);if(v&&!/^\d+$/.test(v)){teamCol=cc;break;}}
+        if(teamCol!==c)break;}
+    }
+    roundCols.push({name:canon,teamCol,scoreCol});
+  }
+  if(!roundCols.length)return null;
+  // determine the last row of the bracket
+  let endRow=hdrRow+1;
+  for(let r=hdrRow+1;r<grid.length;r++){
+    const anyRoundCell=roundCols.some(rc=>at(r,rc.teamCol)||(rc.scoreCol>-1&&at(r,rc.scoreCol)));
+    if(anyRoundCell)endRow=r;
+  }
+  // for each round, read team cells top-to-bottom; each non-blank team (+ adjacent score) is one slot
+  const perRound={};
+  roundCols.forEach(rc=>{
+    const slots=[];
+    for(let r=hdrRow+1;r<=endRow;r++){
+      const t=at(r,rc.teamCol);
+      const s=rc.scoreCol>-1?at(r,rc.scoreCol):'';
+      if(t||s){slots.push({team:t,score:s,row:r});}
+    }
+    perRound[rc.name]=slots;
+  });
+  // build games: 2 consecutive slots per game
   const rounds=[];
-  for(let i=0;i<entries.length;i++){const e=entries[i];if(e.score)continue;
-    let scoreCol=null;for(let j=i+1;j<entries.length;j++){if(entries[j].score){scoreCol=entries[j].col;break;}}
-    if(scoreCol==null)continue;
-    const teamCol=scoreCol-1;
-    const def=BRACKET_ROUND_DEFS.find(d=>d.name.toLowerCase()===e.label.toLowerCase());
-    const gameCount=def?def.games:1;const games=[];
-    for(let g=0;g<gameCount;g++){const r1=hdrRow+1+g*2,r2=r1+1;
-      games.push({t1:at(r1,teamCol)||'TBD',t2:at(r2,teamCol)||'TBD',s1:at(r1,scoreCol),s2:at(r2,scoreCol)});}
-    rounds.push({name:def?def.name:e.label,games});}
-  rounds.sort((a,b)=>BRACKET_ROUND_DEFS.findIndex(d=>d.name===a.name)-BRACKET_ROUND_DEFS.findIndex(d=>d.name===b.name));
+  BRACKET_ROUND_DEFS.forEach(def=>{
+    const slots=perRound[def.name];if(!slots)return;
+    const games=[];
+    for(let g=0;g<def.games;g++){
+      const a=slots[g*2],b=slots[g*2+1];
+      games.push({
+        t1:(a&&a.team)?a.team:'TBD',
+        t2:(b&&b.team)?b.team:'TBD',
+        s1:(a&&a.score)?a.score:'',
+        s2:(b&&b.score)?b.score:''
+      });
+    }
+    rounds.push({name:def.name,games});
+  });
   return{rounds};
 }
 function renderWildCard(){
@@ -1303,7 +1355,11 @@ function renderWildCard(){
   const w=TKW_WILD;
   const title=document.getElementById('wildTitle');
   if(title)title.textContent=(w.name&&/wild/i.test(w.name)?w.name:'Wild Card Race')+' · Live Standings';
-  const rows=w.rows.map((r,i)=>`<tr><td class="team"><span class="pos">${esc(r.rank||String(i+1))}</span>${teamBadge(r.team,'xs')} ${esc(r.team)}</td><td class="pts">${esc(r.pts)}</td><td>${/^-?\d+$/.test(r.gd)&&+r.gd>0?'+':''}${esc(r.gd)}</td></tr>`).join('');
+  const rows=w.rows.map((r,i)=>{
+    const g=String(r.rank||'').trim();
+    const grpLabel=/^\d+$/.test(g)?('Group '+g):(g||'—');
+    return `<tr><td class="team"><span class="grp-tag">${esc(grpLabel)}</span>${teamBadge(r.team,'xs')} ${esc(r.team)}</td><td class="pts">${esc(r.pts)}</td><td>${/^-?\d+$/.test(r.gd)&&+r.gd>0?'+':''}${esc(r.gd)}</td></tr>`;
+  }).join('');
   host.innerHTML=`<div class="gcard wildcard-card"><table class="gtable"><thead><tr><th class="team">Team</th><th>PTS</th><th>GD</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 function renderTKWStandings(){
@@ -1508,7 +1564,7 @@ function buildBracket(size){
   const rounds=size===32
     ?[{n:'Round of 32',c:16},{n:'Round of 16',c:8},{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}]
     :[{n:'Round of 16',c:8},{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}];
-  const W=150,H=48,colGap=60,vGap=12,padT=44,padL=14;
+  const W=176,H=48,colGap=60,vGap=12,padT=44,padL=14;
   const pitch0=H+vGap;const cen=[];
   rounds.forEach((rd,r)=>{cen[r]=[];for(let i=0;i<rd.c;i++){
     cen[r][i]=r===0?padT+i*pitch0+H/2:(cen[r-1][2*i]+cen[r-1][2*i+1])/2;}});
@@ -1526,6 +1582,16 @@ function buildBracket(size){
   s+=`<path class="bkdiv" d="M${colX(rounds.length-1)+W} ${fy} H${champX}" fill="none"/>`;
   rounds.forEach((rd,r)=>{s+=`<text class="bklbl" x="${colX(r)}" y="24">${rd.n}</text>`;});
   s+=`<text class="bklbl" x="${champX}" y="24">Champion</text>`;
+  // SVG flag helper: 20x14 flag image at (fx,fy); TBD / WC placeholders get no flag
+  const svgFlag=(country,fx,fyy)=>{
+    const code=ISO[country];
+    if(!code||/^tbd$|^wc\d*$/i.test((country||'').trim()))return '';
+    const isSub=code.indexOf('-')>-1;
+    const svg=`https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/flags/4x3/${code}.svg`;
+    const png=`https://flagcdn.com/w80/${code}.png`;
+    const href=isSub?svg:png;
+    return `<image href="${href}" x="${fx}" y="${fyy-7}" width="20" height="14" preserveAspectRatio="xMidYMid slice" class="bkflag"/>`;
+  };
   let seed=1;
   rounds.forEach((rd,r)=>{for(let i=0;i<rd.c;i++){
     const x=colX(r),y=cen[r][i]-H/2;
@@ -1533,17 +1599,30 @@ function buildBracket(size){
     s+=`<line class="bkdiv" x1="${x}" y1="${y+H/2}" x2="${x+W}" y2="${y+H/2}"/>`;
     const gm=bracketData&&bracketData.rounds[r]&&bracketData.rounds[r].games[i];
     const t1=gm?(gm.t1||'TBD'):'TBD',t2=gm?(gm.t2||'TBD'):'TBD';
+    const y1=y+H/4+4,y2=y+3*H/4+4;
     if(r===0){
-      s+=`<text class="bkseed" x="${x+11}" y="${y+H/4+4}">${seed}</text><text class="bkslot" x="${x+30}" y="${y+H/4+4}">${esc(t1)}</text>`;
-      s+=`<text class="bkseed" x="${x+11}" y="${y+3*H/4+4}">${seed+1}</text><text class="bkslot" x="${x+30}" y="${y+3*H/4+4}">${esc(t2)}</text>`;
+      s+=`<text class="bkseed" x="${x+11}" y="${y1}">${seed}</text>`;
+      s+=svgFlag(t1,x+26,y1-4)+`<text class="bkslot" x="${x+50}" y="${y1}">${esc(t1)}</text>`;
+      s+=`<text class="bkseed" x="${x+11}" y="${y2}">${seed+1}</text>`;
+      s+=svgFlag(t2,x+26,y2-4)+`<text class="bkslot" x="${x+50}" y="${y2}">${esc(t2)}</text>`;
       seed+=2;
     }else{
-      s+=`<text class="bkslot" x="${x+12}" y="${y+H/4+4}">${esc(t1)}</text>`;
-      s+=`<text class="bkslot" x="${x+12}" y="${y+3*H/4+4}">${esc(t2)}</text>`;}
+      s+=svgFlag(t1,x+12,y1-4)+`<text class="bkslot" x="${x+36}" y="${y1}">${esc(t1)}</text>`;
+      s+=svgFlag(t2,x+12,y2-4)+`<text class="bkslot" x="${x+36}" y="${y2}">${esc(t2)}</text>`;}
   }});
   const cy=fy-H/2;
+  // Champion = winner of the Final (from bracket data if available)
+  let champ='TBD';
+  if(bracketData){
+    const fin=bracketData.rounds.find(rr=>rr.name==='Final');
+    if(fin&&fin.games[0]){const g=fin.games[0];
+      const a=+g.s1,b=+g.s2;
+      if(g.t1&&g.t2&&!isNaN(a)&&!isNaN(b)&&a!==b){champ=a>b?g.t1:g.t2;}}
+  }
   s+=`<g class="bkchamp"><rect class="bkbox" x="${champX}" y="${cy}" width="${W}" height="${H}" rx="9"/>`;
-  s+=`<text class="bkslot" x="${champX+12}" y="${cy+H/2+5}">TBD — Champion</text></g>`;
+  if(champ!=='TBD'){s+=svgFlag(champ,champX+12,cy+H/2)+`<text class="bkslot" x="${champX+36}" y="${cy+H/2+5}">${esc(champ)}</text>`;}
+  else{s+=`<text class="bkslot" x="${champX+12}" y="${cy+H/2+5}">TBD — Champion</text>`;}
+  s+=`</g>`;
   s+=`</svg>`;host.innerHTML=s;}
 
 
