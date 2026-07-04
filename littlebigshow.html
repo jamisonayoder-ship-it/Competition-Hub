@@ -357,7 +357,7 @@ footer{margin-top:60px;border-top:1px solid var(--line);background:#fff}
 </svg>
         <div class="card-name">Doug's Game</div>
         <div class="card-sub">Club World Cup</div>
-        <div class="card-meta">15 group rounds · 16-team knockout · Final at 8:55 PM</div>
+        <div class="card-meta">48 clubs · 4 groups · 8-team knockout</div>
       </button>
     </div>
   </div>
@@ -443,7 +443,7 @@ footer{margin-top:60px;border-top:1px solid var(--line);background:#fff}
     <p class="eyebrow">Knockout Stage · How the title is decided</p>
     <h2>The Road to the Title</h2>
     <p class="konote" id="koNote"></p>
-    <div class="block"><h3 id="wildTitle">Wild Card Race · Live Standings</h3>
+    <div class="block" id="wildBlock"><h3 id="wildTitle">Wild Card Race · Live Standings</h3>
       <p class="konote small">The Wild Card Race decides the final knockout berths. Updates automatically as scores are entered.</p>
       <div id="wildcard" class="wildwrap">
         <div class="ko-empty">Wild Card standings will appear here once games begin.</div>
@@ -556,26 +556,30 @@ const COMPETITIONS={
   },
   club:{
     id:'club',name:"Doug's Game",subtitle:'Club World Cup',
-    tagline:'90 clubs · 9 groups · 16-team knockout · one champion',showTicker:false,
+    tagline:'48 clubs · 4 groups · 8-team knockout · one champion',showTicker:true,
     sheetId:'',
-    rosterTab:'Teams',schedTab:'Team Schedules',schedPubUrl:'',rosterPubUrl:'',minSchedule:5,bracketPubUrl:'',bracketColOffset:0,
-    groupScoreUrls:[],
-    groupScoreTab:'Group 1',
-    groupScoreIds:[],
-    bracketSize:16,hasFieldMap:false,
-    stats:[{label:'Clubs',n:90},{label:'Groups',n:9},{label:'Rounds',n:15},{label:'Champion',s:'1'}],
-    qualEyebrow:'Rounds 1–15 · Live Table',
-    qualNote:'Running standings across the 15 group play rounds for all 9 groups. The 9 group winners plus the 7 best runners-up advance to the Round of 16.',
+    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:8,
+    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=422272405&single=true&output=csv',
+    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1674664057&single=true&output=csv',
+    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1775683329&single=true&output=csv',
+    bracketSize:8,hasFieldMap:false,noFlags:true,noWildCard:true,
+    groupScoreUrls:[
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1848895584&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=530080940&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1505993169&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1879736406&single=true&output=csv'
+    ],
+    stats:[{label:'Clubs',n:48},{label:'Groups',n:4},{label:'Rounds',n:16},{label:'Champion',s:'1'}],
+    qualEyebrow:'Group Stage · Live Standings',
+    qualNote:'Running standings across the 16 group play rounds for all 4 groups.',
     finderEyebrow:"Group Stage · Doug's Game · Club World Cup",
-    koNote:'After 15 group rounds across 9 groups, the 9 group winners plus the 7 best runners-up (16 teams total) advance into the single-elimination knockout: Round of 16 → Quarterfinals → Semifinals → the Final.',
+    koNote:'The top 2 teams from each of the 4 groups advance into an 8-team single-elimination knockout: Quarterfinals → Semifinals → the Final.',
     timeline:[
-      {major:1,rnd:'Rounds 1–15',stage:'Group Play (3 min games, 2 min break)',time:'7:15–8:30 PM'},
-      {rest:1,rnd:'Rest',stage:'Break',time:'8:30–8:35 PM'},
-      {rnd:'Round 16',stage:'Round of 16',time:'8:35 PM'},
-      {rnd:'Round 17',stage:'Quarterfinals',time:'8:40 PM'},
-      {rnd:'Round 18',stage:'Semifinals',time:'8:45 PM'},
-      {rest:1,rnd:'Move',stage:'Move to Stadium Field',time:'8:50–8:55 PM'},
-      {major:1,rnd:'Round 19',stage:'Final',time:'8:55 PM'}
+      {major:1,rnd:'Rounds 1–16',stage:'Group Play',time:'TBD'},
+      {rest:1,rnd:'Rest',stage:'Break',time:'TBD'},
+      {rnd:'Quarterfinals',stage:'Quarterfinals',time:'TBD'},
+      {rnd:'Semifinals',stage:'Semifinals',time:'TBD'},
+      {major:1,rnd:'Final',stage:'Final',time:'TBD'}
     ]
   }
 };
@@ -1298,14 +1302,18 @@ function canonRoundName(lv){
 }
 function parseTKWBracketGrid(grid){
   const at=(r,c)=>(grid[r]&&grid[r][c]!=null)?String(grid[r][c]).trim():'';
-  // locate the bracket header row: the row that contains "Round of 32" OR "Round of 16" as a round header
+  // locate the bracket header row: the row that contains a known round header (R32, R16, or QF)
   let hdrRow=-1;
   for(let r=0;r<grid.length;r++){
     const row=grid[r]||[];
-    if(row.some(v=>{const cn=canonRoundName(String(v||''));return cn==='Round of 32'||cn==='Round of 16';})){hdrRow=r;break;}
+    if(row.some(v=>{const cn=canonRoundName(String(v||''));return cn==='Round of 32'||cn==='Round of 16'||cn==='Quarterfinals';})){hdrRow=r;break;}
   }
   if(hdrRow<0)return null;
   const hrow=grid[hdrRow]||[];
+  // words that appear in the bracket area but are NOT team names (venue labels, headers, etc.)
+  const isNonTeam=v=>{const t=String(v||'').trim();if(!t)return true;
+    return /^(stadium|field|round|score|final|finals|semi[\s-]*finals?|quarter[\s-]*finals?|round of \d+|champion|knockout|bracket|group \d+|standings|team|pts|gd|rank)$/i.test(t)
+      ||/^field\s*\d+$/i.test(t)||/^round\s*\d+$/i.test(t);};
   // map each round header to its team column + score column
   const roundCols=[];
   for(let c=0;c<hrow.length;c++){
@@ -1317,11 +1325,11 @@ function parseTKWBracketGrid(grid){
     let teamCol;
     if(scoreCol>-1){teamCol=scoreCol-1;}
     else{
-      // Final: no score column — find the column at/after header that holds team text below
+      // Final: no score column — find the column at/after header that holds real team text below
       teamCol=c;
       for(let cc=c;cc<Math.min(hrow.length,c+3);cc++){
         for(let rr=hdrRow+1;rr<Math.min(grid.length,hdrRow+40);rr++){
-          const v=at(rr,cc);if(v&&!/^\d+$/.test(v)){teamCol=cc;break;}}
+          const v=at(rr,cc);if(v&&!/^\d+$/.test(v)&&!isNonTeam(v)){teamCol=cc;break;}}
         if(teamCol!==c)break;}
     }
     roundCols.push({name:canon,teamCol,scoreCol});
@@ -1338,8 +1346,9 @@ function parseTKWBracketGrid(grid){
   roundCols.forEach(rc=>{
     const slots=[];
     for(let r=hdrRow+1;r<=endRow;r++){
-      const t=at(r,rc.teamCol);
+      let t=at(r,rc.teamCol);
       const s=rc.scoreCol>-1?at(r,rc.scoreCol):'';
+      if(isNonTeam(t))t='';  // ignore venue labels like "Stadium"
       if(t||s){slots.push({team:t,score:s,row:r});}
     }
     perRound[rc.name]=slots;
@@ -1363,7 +1372,11 @@ function parseTKWBracketGrid(grid){
   return{rounds};
 }
 function renderWildCard(){
+  const block=document.getElementById('wildBlock');
   const host=document.getElementById('wildcard');if(!host)return;
+  // Competitions without a wild card race (e.g. Doug's Game — top 2 per group advance) hide the block entirely
+  if(ACTIVE&&ACTIVE.noWildCard){if(block)block.style.display='none';return;}
+  if(block)block.style.display='';
   if(!TKW_WILD||!TKW_WILD.rows||!TKW_WILD.rows.length){
     host.innerHTML='<div class="ko-empty">Wild Card standings will appear here once games begin.</div>';return;}
   const w=TKW_WILD;
@@ -1577,6 +1590,8 @@ function buildBracket(size){
   const bracketData=isBoardComp()?TKW_BRACKET:null;
   const rounds=size===32
     ?[{n:'Round of 32',c:16},{n:'Round of 16',c:8},{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}]
+    :size===8
+    ?[{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}]
     :[{n:'Round of 16',c:8},{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}];
   const W=176,H=48,colGap=60,vGap=12,padT=44,padL=14;
   const pitch0=H+vGap;const cen=[];
