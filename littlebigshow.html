@@ -328,7 +328,7 @@ footer{margin-top:60px;border-top:1px solid var(--line);background:#fff}
 </svg>
         <div class="card-name">Stan's Game</div>
         <div class="card-sub">College Cup</div>
-        <div class="card-meta">15 group rounds · 32-team knockout · Final at 9:16 PM</div>
+        <div class="card-meta">50 teams · 5 groups · 16-team knockout</div>
       </button>
       <button class="comp-card" onclick="selectComp('club')">
         <svg class="card-icon" viewBox="0 0 100 128" width="80" height="102" xmlns="http://www.w3.org/2000/svg">
@@ -526,28 +526,32 @@ const COMPETITIONS={
   },
   college:{
     id:'college',name:"Stan's Game",subtitle:'College Cup',
-    tagline:'100 teams · 10 groups · 32-team knockout · one champion',showTicker:false,
+    tagline:'50 teams · 5 groups · 16-team knockout · one champion',showTicker:true,
     sheetId:'',
-    rosterTab:'Teams',schedTab:'Team Schedules',rosterPubUrl:'',minSchedule:5,bracketPubUrl:'',bracketColOffset:0,
-    groupScoreUrls:[],
-    groupScoreTab:'Group 1',
-    groupScoreIds:[],
-    bracketSize:32,hasFieldMap:false,
-    stats:[{label:'Teams',n:100},{label:'Groups',n:10},{label:'Rounds',n:15},{label:'Champion',s:'1'}],
-    qualEyebrow:'Rounds 1–15 · Live Table',
-    qualNote:'Running standings across the 15 group play rounds for all 10 groups.',
+    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:10,
+    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=422272405&single=true&output=csv',
+    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=1674664057&single=true&output=csv',
+    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=1775683329&single=true&output=csv',
+    bracketSize:16,hasFieldMap:false,noFlags:true,
+    groupScoreUrls:[
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=990636671&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=745226655&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=416796128&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=232746325&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=1765770352&single=true&output=csv'
+    ],
+    stats:[{label:'Teams',n:50},{label:'Groups',n:5},{label:'Rounds',n:20},{label:'Champion',s:'1'}],
+    qualEyebrow:'Group Stage · Live Standings',
+    qualNote:'Running standings across the group play rounds for all 5 groups.',
     finderEyebrow:"Group Stage · Stan's Game · College Cup",
-    koNote:'After 15 group rounds across 10 groups, the top keepers advance into a 32-team single-elimination knockout: Round of 32 → Round of 16 → Quarterfinals → Semifinals → the Final.',
+    koNote:'The Wild Card Race decides the final knockout spots. Teams advance into a 16-team single-elimination knockout: Round of 16 → Quarterfinals → Semifinals → the Final.',
     timeline:[
-      {major:1,rnd:'Rounds 1–15',stage:'Group Play (3 min games, 2 min break)',time:'7:15–8:30 PM'},
-      {rest:1,rnd:'Rest',stage:'Break',time:'8:30–8:35 PM'},
-      {rnd:'Round 16',stage:'Round of 32',time:'8:35 PM'},
-      {rnd:'Round 17',stage:'Round of 16',time:'8:40 PM'},
-      {rnd:'Round 18',stage:'Quarterfinals',time:'8:45 PM'},
-      {rest:1,rnd:'Move',stage:'Move to Stadium Field',time:'8:50–9:00 PM'},
-      {rnd:'Round 19',stage:'Semifinals #1',time:'9:00 PM'},
-      {rnd:'Round 20',stage:'Semifinals #2',time:'9:08 PM'},
-      {major:1,rnd:'Round 21',stage:'Final',time:'9:16 PM'}
+      {major:1,rnd:'Group Play',stage:'Group Play',time:'TBD'},
+      {rest:1,rnd:'Rest',stage:'Break',time:'TBD'},
+      {rnd:'Round of 16',stage:'Round of 16',time:'TBD'},
+      {rnd:'Quarterfinals',stage:'Quarterfinals',time:'TBD'},
+      {rnd:'Semifinals',stage:'Semifinals',time:'TBD'},
+      {major:1,rnd:'Final',stage:'Final',time:'TBD'}
     ]
   },
   club:{
@@ -608,6 +612,8 @@ let SCHEDULE={},TEAMS=[],INDEX=[],COUNTRY2TEAM={},OPP={};
 let SCORES={},QUAL_STANDINGS={},LAST_UPDATED=null;
 let GROUPS_LOADING=false,lastChoice=null;
 let TKW_GROUPS=[],TKW_BRACKET=null,TKW_WILD=null,TKW_LOADING=false;
+// A "board comp" uses the single standings/bracket board sheet + group score tabs (TKW-style). Currently TKW and Stan's Game.
+function isBoardComp(c){c=c||ACTIVE;return !!(c&&c.tkwBoardPubUrl);}
 
 /* ============ SEEDED DATA (TKW UEFA #2 snapshot) ============ */
 const TKW_SEED_STANDINGS={
@@ -1012,6 +1018,7 @@ function abbrev(name){
   return name.replace(/^(FC|CF|AC|AS|VfB|RB|AF|FK|SC|CD|UD)\s+/,'')
     .split(/[\s.&\/\-]+/).filter(Boolean).map(w=>w[0]).join('').slice(0,3).toUpperCase();}
 function teamBadge(name,size){
+  if(ACTIVE&&ACTIVE.noFlags)return '';
   if(!ACTIVE||ACTIVE.id==='tkw')return flagBox(name,size);
   const map=ACTIVE.id==='college'?STAN_LOGOS:ACTIVE.id==='club'?DOUG_LOGOS:null;
   const ab=abbrev(name);
@@ -1025,8 +1032,12 @@ function buildTicker(){
   if(!ACTIVE||!ACTIVE.showTicker){if(ticker)ticker.style.display='none';return;}
   if(ticker)ticker.style.display='';
   // Use the actual teams loaded for this competition; fall back to ISO list if none yet
-  let nations=(TEAMS&&TEAMS.length)?TEAMS.map(t=>t.country):Object.keys(ISO).slice(0,50);
+  let nations=(TEAMS&&TEAMS.length)?TEAMS.map(t=>t.country):(ACTIVE.noFlags?[]:Object.keys(ISO).slice(0,50));
+  const noFlags=!!ACTIVE.noFlags;
   const items=nations.map(n=>{
+    if(noFlags){
+      return `<span class="tkitem"><span class="tkname">${esc(n)}</span></span>`;
+    }
     const code=ISO[n];
     let img;
     if(code){
@@ -1198,11 +1209,11 @@ async function load(){
     SCHEDULE=s;TEAMS=teamsParsed;
     if(!TEAMS.length)throw new Error('roster parsed 0 teams. '+LAST_LOAD_DIAG);
     buildIndex();setStatus('live');
-    if(comp.id==='tkw'){loadTKWBoard();loadGroupData();}else{buildQualStandings();loadGroupData();}
+    if(isBoardComp(comp)){loadTKWBoard();loadGroupData();}else{buildQualStandings();loadGroupData();}
     buildTicker();
   }catch(err){
     LAST_LOAD_DIAG=(err&&err.message)||String(err);
-    if(comp.id==='tkw'){SCHEDULE={};TEAMS=[];buildIndex();setStatus('error');renderTKWStandings();}
+    if(isBoardComp(comp)){SCHEDULE={};TEAMS=[];buildIndex();setStatus('error');renderTKWStandings();}
     else{const sd=buildStaticData(comp.id==='college'?STAN_STATIC:DOUG_STATIC);SCHEDULE=sd.sched;TEAMS=sd.teams;
       buildIndex();setStatus(Object.keys(SCHEDULE).length?'demo':'error');
       buildQualStandings();if((comp.groupScoreIds||[]).length)loadGroupData();}
@@ -1287,9 +1298,12 @@ function canonRoundName(lv){
 }
 function parseTKWBracketGrid(grid){
   const at=(r,c)=>(grid[r]&&grid[r][c]!=null)?String(grid[r][c]).trim():'';
-  // locate the bracket header row (the one containing "Round of 32")
+  // locate the bracket header row: the row that contains "Round of 32" OR "Round of 16" as a round header
   let hdrRow=-1;
-  for(let r=0;r<grid.length;r++){if((grid[r]||[]).some(v=>/round\s*of\s*32/i.test(String(v||'')))){hdrRow=r;break;}}
+  for(let r=0;r<grid.length;r++){
+    const row=grid[r]||[];
+    if(row.some(v=>{const cn=canonRoundName(String(v||''));return cn==='Round of 32'||cn==='Round of 16';})){hdrRow=r;break;}
+  }
   if(hdrRow<0)return null;
   const hrow=grid[hdrRow]||[];
   // map each round header to its team column + score column
@@ -1374,7 +1388,7 @@ function renderTKWStandings(){
   }).join('');
 }
 async function loadTKWBoard(){
-  if(!ACTIVE||ACTIVE.id!=='tkw'||TKW_LOADING)return;
+  if(!ACTIVE||!isBoardComp()||TKW_LOADING)return;
   const url=ACTIVE.tkwBoardPubUrl;if(!url)return;
   TKW_LOADING=true;const btn=document.getElementById('qualRefresh');if(btn)btn.classList.add('spin');
   try{
@@ -1496,7 +1510,7 @@ async function loadGroupData(){
     }));}
   LAST_UPDATED=new Date();GROUPS_LOADING=false;
   if(btn)btn.classList.remove('spin');
-  if(ACTIVE&&ACTIVE.id==='tkw'){renderTKWStandings();}else{buildQualStandings();}
+  if(isBoardComp()){renderTKWStandings();}else{buildQualStandings();}
   if(lastChoice)renderResult(lastChoice);
   const _kot=document.getElementById('tab-ko');if(_kot&&_kot.classList.contains('active')&&ACTIVE&&ACTIVE.groupPlayPubUrl)fetchBracketData();}
 
@@ -1560,7 +1574,7 @@ function buildBracket(size){
   renderWildCard();
   const host=document.getElementById('bracket');if(!host||!ACTIVE)return;
   if(!size)size=ACTIVE.bracketSize||32;
-  const bracketData=(ACTIVE.id==='tkw')?TKW_BRACKET:null;
+  const bracketData=isBoardComp()?TKW_BRACKET:null;
   const rounds=size===32
     ?[{n:'Round of 32',c:16},{n:'Round of 16',c:8},{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}]
     :[{n:'Round of 16',c:8},{n:'Quarterfinals',c:4},{n:'Semifinals',c:2},{n:'Final',c:1}];
@@ -1584,6 +1598,7 @@ function buildBracket(size){
   s+=`<text class="bklbl" x="${champX}" y="24">Champion</text>`;
   // SVG flag helper: 20x14 flag image at (fx,fy); TBD / WC placeholders get no flag
   const svgFlag=(country,fx,fyy)=>{
+    if(ACTIVE&&ACTIVE.noFlags)return '';
     const code=ISO[country];
     if(!code||/^tbd$|^wc\d*$/i.test((country||'').trim()))return '';
     const isSub=code.indexOf('-')>-1;
@@ -1593,6 +1608,8 @@ function buildBracket(size){
     return `<image href="${href}" x="${fx}" y="${fyy-7}" width="20" height="14" preserveAspectRatio="xMidYMid slice" class="bkflag"/>`;
   };
   let seed=1;
+  const nf=!!(ACTIVE&&ACTIVE.noFlags);
+  const tx0=nf?30:50, tx1=nf?12:36; // text x for r0 (after seed) and later rounds
   rounds.forEach((rd,r)=>{for(let i=0;i<rd.c;i++){
     const x=colX(r),y=cen[r][i]-H/2;
     s+=`<rect class="bkbox" x="${x}" y="${y}" width="${W}" height="${H}" rx="9"/>`;
@@ -1602,13 +1619,13 @@ function buildBracket(size){
     const y1=y+H/4+4,y2=y+3*H/4+4;
     if(r===0){
       s+=`<text class="bkseed" x="${x+11}" y="${y1}">${seed}</text>`;
-      s+=svgFlag(t1,x+26,y1-4)+`<text class="bkslot" x="${x+50}" y="${y1}">${esc(t1)}</text>`;
+      s+=svgFlag(t1,x+26,y1-4)+`<text class="bkslot" x="${x+tx0}" y="${y1}">${esc(t1)}</text>`;
       s+=`<text class="bkseed" x="${x+11}" y="${y2}">${seed+1}</text>`;
-      s+=svgFlag(t2,x+26,y2-4)+`<text class="bkslot" x="${x+50}" y="${y2}">${esc(t2)}</text>`;
+      s+=svgFlag(t2,x+26,y2-4)+`<text class="bkslot" x="${x+tx0}" y="${y2}">${esc(t2)}</text>`;
       seed+=2;
     }else{
-      s+=svgFlag(t1,x+12,y1-4)+`<text class="bkslot" x="${x+36}" y="${y1}">${esc(t1)}</text>`;
-      s+=svgFlag(t2,x+12,y2-4)+`<text class="bkslot" x="${x+36}" y="${y2}">${esc(t2)}</text>`;}
+      s+=svgFlag(t1,x+12,y1-4)+`<text class="bkslot" x="${x+tx1}" y="${y1}">${esc(t1)}</text>`;
+      s+=svgFlag(t2,x+12,y2-4)+`<text class="bkslot" x="${x+tx1}" y="${y2}">${esc(t2)}</text>`;}
   }});
   const cy=fy-H/2;
   // Champion = winner of the Final (from bracket data if available)
@@ -1620,7 +1637,7 @@ function buildBracket(size){
       if(g.t1&&g.t2&&!isNaN(a)&&!isNaN(b)&&a!==b){champ=a>b?g.t1:g.t2;}}
   }
   s+=`<g class="bkchamp"><rect class="bkbox" x="${champX}" y="${cy}" width="${W}" height="${H}" rx="9"/>`;
-  if(champ!=='TBD'){s+=svgFlag(champ,champX+12,cy+H/2)+`<text class="bkslot" x="${champX+36}" y="${cy+H/2+5}">${esc(champ)}</text>`;}
+  if(champ!=='TBD'){s+=svgFlag(champ,champX+12,cy+H/2)+`<text class="bkslot" x="${champX+(nf?12:36)}" y="${cy+H/2+5}">${esc(champ)}</text>`;}
   else{s+=`<text class="bkslot" x="${champX+12}" y="${cy+H/2+5}">TBD — Champion</text>`;}
   s+=`</g>`;
   s+=`</svg>`;host.innerHTML=s;}
@@ -1668,11 +1685,11 @@ window.openFieldMap=openFieldMap;
     const panel=document.getElementById('tab-'+id);if(panel)panel.classList.add('active');
     if(id==='ko'&&ACTIVE){
       buildBracket(ACTIVE.bracketSize);
-      if(ACTIVE.id==='tkw'){if(!TKW_GROUPS.length)loadTKWBoard();}
+      if(isBoardComp()){if(!TKW_GROUPS.length)loadTKWBoard();}
       else if(ACTIVE.groupPlayPubUrl){fetchBracketData();}
     }
     if(id==='standings'){const h=document.getElementById('qualStandings');if(h&&!h.children.length){
-      if(ACTIVE&&ACTIVE.id==='tkw')renderTKWStandings();else buildQualStandings();}}
+      if(isBoardComp())renderTKWStandings();else buildQualStandings();}}
   }));})();
 
 /* ============ HERO PARALLAX ============ */
@@ -1712,7 +1729,7 @@ function selectComp(id){
   BRACKET_DATA=null;GPLAY_DATA=null;TKW_GROUPS=[];TKW_BRACKET=null;TKW_WILD=null;
   // update UI
   updateHero();updateStats();updateSectionText();
-  if(id==='tkw')renderTKWStandings();else buildQualStandings();
+  if(isBoardComp())renderTKWStandings();else buildQualStandings();
   resetSearch();
   // reset tabs to finder
   document.querySelectorAll('.tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
@@ -1730,7 +1747,7 @@ function selectComp(id){
   // poll — TKW re-fetches roster+schedule+standings/bracket every cycle so roster edits show up too
   GROUPS_TIMER=setInterval(()=>{
     if(document.hidden||!ACTIVE)return;
-    if(ACTIVE.id==='tkw'){load();}
+    if(isBoardComp()){load();}
     else if(Object.keys(SCHEDULE).length){loadGroupData();}
   },60000);
   // save hash
@@ -1739,10 +1756,10 @@ function selectComp(id){
 // wire refresh button
 document.getElementById('qualRefresh').addEventListener('click',()=>{
   if(!ACTIVE)return;
-  if(ACTIVE.id==='tkw'){load();}else if(Object.keys(SCHEDULE).length){loadGroupData();}});
+  if(isBoardComp()){load();}else if(Object.keys(SCHEDULE).length){loadGroupData();}});
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden||!ACTIVE)return;
-  if(ACTIVE.id==='tkw'){load();}else if(Object.keys(SCHEDULE).length){loadGroupData();}});
+  if(isBoardComp()){load();}else if(Object.keys(SCHEDULE).length){loadGroupData();}});
 
 // auto-select from URL hash
 (function(){
