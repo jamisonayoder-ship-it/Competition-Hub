@@ -361,7 +361,7 @@ footer{margin-top:60px;border-top:1px solid var(--line);background:#fff}
 </svg>
         <div class="card-name">Doug's Game</div>
         <div class="card-sub">Club World Cup</div>
-        <div class="card-meta">48 clubs · 4 groups · 8-team knockout</div>
+        <div class="card-meta">50 teams · 5 groups · 16-team knockout</div>
       </button>
     </div>
   </div>
@@ -559,30 +559,32 @@ const COMPETITIONS={
   },
   club:{
     id:'club',name:"Doug's Game",subtitle:'Club World Cup',
-    tagline:'48 clubs · 4 groups · 8-team knockout · one champion',showTicker:true,
+    tagline:'50 teams · 5 groups · 16-team knockout · one champion',showTicker:true,
     sheetId:'',
-    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:8,
-    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=422272405&single=true&output=csv',
-    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1674664057&single=true&output=csv',
-    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1775683329&single=true&output=csv',
-    bracketSize:8,hasFieldMap:false,noFlags:true,noWildCard:true,
+    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:10,
+    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=422272405&single=true&output=csv',
+    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=1674664057&single=true&output=csv',
+    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=1775683329&single=true&output=csv',
+    bracketSize:16,hasFieldMap:false,noFlags:true,
     groupScoreUrls:[
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1848895584&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=530080940&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1505993169&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1879736406&single=true&output=csv'
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=990636671&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=745226655&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=416796128&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=232746325&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_xxBeS04Bc1GOobcISQxFTW2KXghPsYuqKOFeJnsLr0wbIM5Akj9Do4BHNiWeBk-RdLPnz7xUAxWK/pub?gid=1765770352&single=true&output=csv'
     ],
-    stats:[{label:'Clubs',n:48},{label:'Groups',n:4},{label:'Rounds',n:16},{label:'Champion',s:'1'}],
+    stats:[{label:'Teams',n:50},{label:'Groups',n:5},{label:'Rounds',n:20},{label:'Champion',s:'1'}],
     qualEyebrow:'Group Stage · Live Standings',
-    qualNote:'Running standings across the 16 group play rounds for all 4 groups.',
+    qualNote:'Running standings across the 15 qualifier rounds for all 5 groups.',
     finderEyebrow:"Group Stage · Doug's Game · Club World Cup",
-    koNote:'The top 2 teams from each of the 4 groups advance into an 8-team single-elimination knockout: Quarterfinals → Semifinals → the Final.',
+    koNote:'The Wild Card Race decides the final knockout spots. After 15 qualifier rounds, teams advance into a 16-team single-elimination knockout: Round of 16 → Quarterfinals → Semifinals → the Final.',
     timeline:[
-      {major:1,rnd:'Rounds 1–16',stage:'Group Play',time:'TBD'},
+      {major:1,rnd:'Rounds 1–15',stage:'Qualifier Stage',time:'TBD'},
       {rest:1,rnd:'Rest',stage:'Break',time:'TBD'},
-      {rnd:'Quarterfinals',stage:'Quarterfinals',time:'TBD'},
-      {rnd:'Semifinals',stage:'Semifinals',time:'TBD'},
-      {major:1,rnd:'Final',stage:'Final',time:'TBD'}
+      {rnd:'Round 16',stage:'Round of 16',time:'TBD'},
+      {rnd:'Round 17',stage:'Quarterfinals',time:'TBD'},
+      {rnd:'Round 18',stage:'Semifinals',time:'TBD'},
+      {major:1,rnd:'Round 19',stage:'Final',time:'TBD'}
     ]
   }
 };
@@ -652,6 +654,32 @@ function parseCSV(text){const rows=[];let row=[],cell='',q=false;
    else if(ch==='\r'){}else cell+=ch;}}
  if(cell!==''||row.length){row.push(cell);rows.push(row);}return rows;}
 
+/* Canonicalize a team name so tiny sheet inconsistencies (stray/non-breaking spaces,
+   double spaces, odd casing, stray prefixes like "IR Iran") don't break lookups. */
+/* Only for genuinely different strings that should collapse to one team.
+   Keep this minimal — resolveTeam() already handles case/whitespace drift,
+   so we must NOT rename teams that your sheets already spell consistently. */
+const TEAM_ALIAS={
+  'ir iran':'Iran'
+};
+function normTeam(v){
+  let s=String(v==null?'':v);
+  s=s.replace(/\u00a0/g,' ')          // non-breaking space -> normal space
+     .replace(/[\u200B-\u200D\uFEFF]/g,'') // zero-width junk
+     .replace(/\s+/g,' ')             // collapse repeated spaces
+     .trim();
+  if(TEAM_ALIAS[s.toLowerCase()])s=TEAM_ALIAS[s.toLowerCase()];
+  return s;
+}
+/* Given a name, find the matching key already in SCHEDULE (case-insensitive fallback). */
+function resolveTeam(name){
+  const n=normTeam(name);
+  if(!n)return '';
+  if(SCHEDULE[n])return n;
+  const lower=n.toLowerCase();
+  const hit=Object.keys(SCHEDULE).find(k=>k.toLowerCase()===lower);
+  return hit||n;
+}
 function parseSchedule(grid){
   const at=(r,c)=>(grid[r]&&grid[r][c]!=null)?String(grid[r][c]):'';
   const out={};
@@ -666,7 +694,7 @@ function parseSchedule(grid){
       for(let cc=Math.max(0,roundCol-2);cc<=roundCol+1;cc++){
         const m=at(rr,cc).match(/Group\s*\d+/i);if(m){gname=m[0];break;}}}
     // team columns start immediately after the Round column and run until a blank header cell
-    const cols=[];let j=roundCol+1;while(at(r,j).trim()){cols.push([j,at(r,j).trim()]);j++;}
+    const cols=[];let j=roundCol+1;while(at(r,j).trim()){cols.push([j,normTeam(at(r,j))]);j++;}
     if(!cols.length)continue;
     const teamRounds={};cols.forEach(([,name])=>teamRounds[name]=[]);
     const fieldsSeen=new Set();
@@ -692,7 +720,7 @@ function parseTeams(grid){
   for(let r=1;r<grid.length;r++){
     const row=grid[r]||[];
     const gm=String(row[0]||'').trim().match(/Group\s*\d+/i);if(gm)currentGroup=gm[0];
-    const country=String(row[1]||'').trim();if(!country)continue;
+    const country=normTeam(row[1]);if(!country)continue;
     const players=[];
     for(const c of nameCols){const v=String(row[c]||'').trim();if(v&&!/^\d+(\.\d+)?$/.test(v))players.push(v);}
     teams.push({country,players,group:currentGroup});
@@ -1110,7 +1138,11 @@ function resetSearch(){q.value='';sg.classList.remove('open');q.setAttribute('ar
   const r=document.getElementById('result');if(r){r.classList.remove('show');r.innerHTML='';}}
 function buildIndex(){
   INDEX=[];COUNTRY2TEAM={};
-  for(const t of TEAMS){if(!COUNTRY2TEAM[t.country])COUNTRY2TEAM[t.country]=t;
+  for(const t of TEAMS){
+    // align the roster's spelling with the schedule's key so the schedule always resolves
+    const key=resolveTeam(t.country);
+    if(key&&key!==t.country)t.country=key;
+    if(!COUNTRY2TEAM[t.country])COUNTRY2TEAM[t.country]=t;
     INDEX.push({type:'country',label:t.country,country:t.country});
     t.players.forEach(p=>INDEX.push({type:'player',label:p,country:t.country,team:t}));}
   OPP=computeOpponents(SCHEDULE);}
@@ -1252,7 +1284,7 @@ function parseGroupScores(grid){
   const pairs=[];for(let i=0;i+1<scoreCols.length;i+=2)pairs.push([scoreCols[i],scoreCols[i+1]]);
   const out=[];
   for(let r=headerRow+1;r<grid.length;r++){const rd=at(r,roundCol);if(!/^\d+$/.test(rd))continue;
-    pairs.forEach(([sa,sb])=>{const home=at(r,sa-1),away=at(r,sb+1),hs=at(r,sa),as=at(r,sb);
+    pairs.forEach(([sa,sb])=>{const home=normTeam(at(r,sa-1)),away=normTeam(at(r,sb+1)),hs=at(r,sa),as=at(r,sb);
       if(home&&away&&isNumStr(hs)&&isNumStr(as))out.push({round:+rd,home,away,hs:+hs,as:+as});});}
   return out;}
 
@@ -1278,7 +1310,7 @@ function parseTKWStandingsGroups(grid){
         }}
       const rows=[];let rr=r+1;
       while(at(rr,c)){const rank=at(rr,c-1)||String(rows.length+1);
-        rows.push({rank,team:at(rr,c),pts:at(rr,c+1),gd:at(rr,c+2)});rr++;}
+        rows.push({rank,team:normTeam(at(rr,c)),pts:at(rr,c+1),gd:at(rr,c+2)});rr++;}
       if(rows.length){
         const isWild=/wild\s*card/i.test(label);
         blocks.push({name:label||('Group '+(blocks.length+1)),rows,wild:isWild});
@@ -1352,6 +1384,7 @@ function parseTKWBracketGrid(grid){
       let t=at(r,rc.teamCol);
       const s=rc.scoreCol>-1?at(r,rc.scoreCol):'';
       if(isNonTeam(t))t='';  // ignore venue labels like "Stadium"
+      t=normTeam(t);
       if(t||s){slots.push({team:t,score:s,row:r});}
     }
     perRound[rc.name]=slots;
@@ -1458,9 +1491,10 @@ async function loadGroupData(){
     // Parse game scores first (used for schedule display)
     const games=parseGroupScores(grid);
     games.forEach(m=>{
-      if(SCHEDULE[m.home]&&SCHEDULE[m.away]){
-        SCORES[m.home+'@'+m.round]={gf:m.hs,ga:m.as,opp:m.away};
-        SCORES[m.away+'@'+m.round]={gf:m.as,ga:m.hs,opp:m.home};}});
+      const h=resolveTeam(m.home),a=resolveTeam(m.away);
+      if(SCHEDULE[h]&&SCHEDULE[a]){
+        SCORES[h+'@'+m.round]={gf:m.hs,ga:m.as,opp:a};
+        SCORES[a+'@'+m.round]={gf:m.as,ga:m.hs,opp:h};}});
     // Try pre-formatted standings table first
     let st=(parseStandingsGrid(grid)||[]).filter(r=>SCHEDULE[r.team]);
     // If no standings table, compute from game scores
@@ -1514,7 +1548,7 @@ async function loadGroupData(){
         const conf=detectConfFromGrid(grid);
         if(conf&&!QUAL_STANDINGS[conf]){
           const games2=parseGroupScores(grid);
-          games2.forEach(m=>{if(SCHEDULE[m.home]&&SCHEDULE[m.away]){SCORES[m.home+'@'+m.round]={gf:m.hs,ga:m.as,opp:m.away};SCORES[m.away+'@'+m.round]={gf:m.as,ga:m.hs,opp:m.home};}});
+          games2.forEach(m=>{const h=resolveTeam(m.home),a=resolveTeam(m.away);if(SCHEDULE[h]&&SCHEDULE[a]){SCORES[h+'@'+m.round]={gf:m.hs,ga:m.as,opp:a};SCORES[a+'@'+m.round]={gf:m.as,ga:m.hs,opp:h};}});
           let st2=(parseStandingsGrid(grid)||[]).filter(r=>SCHEDULE[r.team]);
           if(!st2.length&&games2.length){
             const tbl2={};
