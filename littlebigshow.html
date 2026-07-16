@@ -363,6 +363,40 @@ footer{margin-top:60px;border-top:1px solid var(--line);background:#fff}
         <div class="card-sub">Club World Cup</div>
         <div class="card-meta">50 teams · 5 groups · 16-team knockout</div>
       </button>
+      <button class="comp-card" onclick="selectComp('lbsst')">
+        <svg class="card-icon" viewBox="0 0 100 128" width="80" height="102" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lbBall" cx="0.38" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.7" stop-color="#eef3f8"/>
+      <stop offset="1" stop-color="#c7d2dd"/>
+    </radialGradient>
+  </defs>
+  <!-- soft shadow -->
+  <ellipse cx="50" cy="118" rx="34" ry="7" fill="#00000014"/>
+  <!-- ball -->
+  <circle cx="50" cy="60" r="42" fill="url(#lbBall)" stroke="#25405c" stroke-width="2.5"/>
+  <!-- center pentagon -->
+  <path d="M50 40 L64 50 L58 67 L42 67 L36 50 Z" fill="#123a63"/>
+  <!-- surrounding seams -->
+  <path d="M50 40 L50 22" stroke="#25405c" stroke-width="2.4"/>
+  <path d="M64 50 L82 44" stroke="#25405c" stroke-width="2.4"/>
+  <path d="M58 67 L70 82" stroke="#25405c" stroke-width="2.4"/>
+  <path d="M42 67 L30 82" stroke="#25405c" stroke-width="2.4"/>
+  <path d="M36 50 L18 44" stroke="#25405c" stroke-width="2.4"/>
+  <!-- outer partial pentagons -->
+  <path d="M50 22 L64 26 L64 50" fill="none" stroke="#25405c" stroke-width="2.2"/>
+  <path d="M50 22 L36 26 L36 50" fill="none" stroke="#25405c" stroke-width="2.2"/>
+  <path d="M82 44 L86 60 L70 82" fill="none" stroke="#25405c" stroke-width="2.2"/>
+  <path d="M18 44 L14 60 L30 82" fill="none" stroke="#25405c" stroke-width="2.2"/>
+  <path d="M30 82 L50 90 L70 82" fill="none" stroke="#25405c" stroke-width="2.2"/>
+  <!-- highlight -->
+  <ellipse cx="38" cy="44" rx="9" ry="6" fill="#ffffff" opacity="0.55" transform="rotate(-28 38 44)"/>
+</svg>
+        <div class="card-name">LBSST</div>
+        <div class="card-sub">Little Big Show Soccer Tournament</div>
+        <div class="card-meta">28 teams · 7 groups · 8-team knockout</div>
+      </button>
     </div>
   </div>
 </div>
@@ -585,6 +619,38 @@ const COMPETITIONS={
       {rnd:'Round 17',stage:'Quarterfinals',time:'TBD'},
       {rnd:'Round 18',stage:'Semifinals',time:'TBD'},
       {major:1,rnd:'Round 19',stage:'Final',time:'TBD'}
+    ]
+  },
+  lbsst:{
+    id:'lbsst',name:'LBSST',subtitle:'Little Big Show Soccer Tournament',
+    tagline:'28 teams · 7 groups · 8-team knockout · one champion',showTicker:true,
+    sheetId:'',
+    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:6,
+    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vS5sBUWtsUYf7qKbe4uh8HkoyHQlbjUk__rFctkccB8OFRPNr0Te3eEPYg__gxzRspoHoZotqmraURG/pub?gid=1305389072&single=true&output=csv',
+    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vS5sBUWtsUYf7qKbe4uh8HkoyHQlbjUk__rFctkccB8OFRPNr0Te3eEPYg__gxzRspoHoZotqmraURG/pub?gid=2016704243&single=true&output=csv',
+    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vS5sBUWtsUYf7qKbe4uh8HkoyHQlbjUk__rFctkccB8OFRPNr0Te3eEPYg__gxzRspoHoZotqmraURG/pub?gid=1775683329&single=true&output=csv',
+    bracketSize:8,hasFieldMap:false,noFlags:true,noWildCard:true,
+    perFieldStandings:true,
+    groupScoreUrls:[
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vR45XskYtupLHf1InC_tOgYY0-PsfpplciXDkoOaOgHDpoucOnSa9tJlF3MLXORY2WzB4NufKlQqZTr/pub?gid=0&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vS38S52DblphAfbQna0_nZza1-arB1xSwYyJhMvAc-HXjefw5wCKHth0ayKwummSL7bcqc-5rRET_rA/pub?gid=0&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vRxnT8CdUxogJ4mUeHCyoJ6hedipsTXhcqueACKxERXtuUsKgMy5Up_21WaVrRQoId4QyHLYv6Spvyy/pub?gid=0&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vStp032kjKCtk3hw3sZuPYSDb-9lxnr_Vz6fQ3SVY0i7N6Lgk6yS8t-rSXAT4zU_4lOSnQ9hE16Wzno/pub?gid=0&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vR4u6zQ392kxvw9zNQjU7wSR3YgPM2grd6D5uYRoFZiw1i1bUDBLHvN50Hqa50EQBHwnDUe0VcM_Hxl/pub?gid=0&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vR0ec5wOIV2J6hOWqSvbTAyck4nmYe7HnnWogr4jvZ5JYmKHS5WXpY5vspaYXCoLF57KxX2y7DTXGpJ/pub?gid=0&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFh7pEnFB25ck_8LhWDcC8Izt8C_hk5bhBKlPTItdIGXpnQqPwFCZ71p9A8pDLVkF6vxiIXESiGtNO/pub?gid=0&single=true&output=csv'
+    ],
+    stats:[{label:'Teams',n:28},{label:'Groups',n:7},{label:'Rounds',n:6},{label:'Champion',s:'1'}],
+    qualEyebrow:'Group Stage · Live Standings',
+    qualNote:'Running standings across the 6 group rounds for all 7 groups.',
+    finderEyebrow:'Group Stage · Little Big Show Soccer Tournament',
+    koNote:'The top teams from each group advance into an 8-team single-elimination knockout: Quarterfinals → Semifinals → the Final.',
+    timeline:[
+      {major:1,rnd:'Rounds 1–6',stage:'Group Stage',time:'TBD'},
+      {rest:1,rnd:'Rest',stage:'Break',time:'TBD'},
+      {rnd:'Quarterfinals',stage:'Quarterfinals',time:'TBD'},
+      {rnd:'Semifinals',stage:'Semifinals',time:'TBD'},
+      {major:1,rnd:'Final',stage:'Final',time:'TBD'}
     ]
   }
 };
@@ -1440,18 +1506,42 @@ async function loadTKWBoard(){
   if(!ACTIVE||!isBoardComp()||TKW_LOADING)return;
   const url=ACTIVE.tkwBoardPubUrl;if(!url)return;
   TKW_LOADING=true;const btn=document.getElementById('qualRefresh');if(btn)btn.classList.add('spin');
-  try{
-    const r=await fetch(url,{cache:'no-store'});
-    if(r.ok){const t=await r.text();
-      if(!t.trim().startsWith('<!')){
-        const grid=parseCSV(t);
-        const parsed=parseTKWStandingsGroups(grid);
-        if(parsed.groups.length)TKW_GROUPS=parsed.groups;
-        TKW_WILD=parsed.wild;
-        const bracket=parseTKWBracketGrid(grid);if(bracket)TKW_BRACKET=bracket;
-        LAST_UPDATED=new Date();
-      }}
-  }catch(e){}
+  if(ACTIVE.perFieldStandings){
+    // LBSST: standings live in 7 separate per-field workbooks; bracket lives on the board sheet.
+    const fieldUrls=ACTIVE.groupScoreUrls||[];
+    const groups=[];
+    await Promise.all(fieldUrls.map(async(fu)=>{
+      try{const r=await fetch(fu,{cache:'no-store'});
+        if(r.ok){const t=await r.text();
+          if(!t.trim().startsWith('<!')){
+            const parsed=parseTKWStandingsGroups(parseCSV(t));
+            parsed.groups.forEach(g=>groups.push(g));
+          }}}catch(e){}
+    }));
+    if(groups.length){
+      groups.sort((a,b)=>(parseInt((a.name.match(/\d+/)||['99'])[0],10))-(parseInt((b.name.match(/\d+/)||['99'])[0],10)));
+      TKW_GROUPS=groups;
+    }
+    TKW_WILD=null;
+    try{const r=await fetch(url,{cache:'no-store'});
+      if(r.ok){const t=await r.text();
+        if(!t.trim().startsWith('<!')){const bracket=parseTKWBracketGrid(parseCSV(t));if(bracket)TKW_BRACKET=bracket;}}
+    }catch(e){}
+    LAST_UPDATED=new Date();
+  }else{
+    try{
+      const r=await fetch(url,{cache:'no-store'});
+      if(r.ok){const t=await r.text();
+        if(!t.trim().startsWith('<!')){
+          const grid=parseCSV(t);
+          const parsed=parseTKWStandingsGroups(grid);
+          if(parsed.groups.length)TKW_GROUPS=parsed.groups;
+          TKW_WILD=parsed.wild;
+          const bracket=parseTKWBracketGrid(grid);if(bracket)TKW_BRACKET=bracket;
+          LAST_UPDATED=new Date();
+        }}
+    }catch(e){}
+  }
   TKW_LOADING=false;if(btn)btn.classList.remove('spin');
   renderTKWStandings();
   const kotab=document.getElementById('tab-ko');
