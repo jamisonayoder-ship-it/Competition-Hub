@@ -630,7 +630,7 @@ const COMPETITIONS={
     schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vS5sBUWtsUYf7qKbe4uh8HkoyHQlbjUk__rFctkccB8OFRPNr0Te3eEPYg__gxzRspoHoZotqmraURG/pub?gid=2016704243&single=true&output=csv',
     tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vS5sBUWtsUYf7qKbe4uh8HkoyHQlbjUk__rFctkccB8OFRPNr0Te3eEPYg__gxzRspoHoZotqmraURG/pub?gid=1775683329&single=true&output=csv',
     bracketSize:8,hasFieldMap:false,noFlags:true,noWildCard:true,
-    perFieldStandings:true,
+    perFieldStandings:true,matchupOpponents:true,
     groupScoreUrls:[
       'https://docs.google.com/spreadsheets/d/e/2PACX-1vR45XskYtupLHf1InC_tOgYY0-PsfpplciXDkoOaOgHDpoucOnSa9tJlF3MLXORY2WzB4NufKlQqZTr/pub?gid=0&single=true&output=csv',
       'https://docs.google.com/spreadsheets/d/e/2PACX-1vS38S52DblphAfbQna0_nZza1-arB1xSwYyJhMvAc-HXjefw5wCKHth0ayKwummSL7bcqc-5rRET_rA/pub?gid=0&single=true&output=csv',
@@ -685,6 +685,7 @@ const CONF_FULL={
 let ACTIVE=null;
 let SCHEDULE={},TEAMS=[],INDEX=[],COUNTRY2TEAM={},OPP={};
 let SCORES={},QUAL_STANDINGS={},LAST_UPDATED=null;
+let MATCHUP={};  // team@round -> opponent name (from score sheets; works even with no score yet)
 let GROUPS_LOADING=false,lastChoice=null;
 let TKW_GROUPS=[],TKW_BRACKET=null,TKW_WILD=null,TKW_LOADING=false;
 // A "board comp" uses the single standings/bracket board sheet + group score tabs (TKW-style). Currently TKW and Stan's Game.
@@ -1243,12 +1244,27 @@ const resultEl=document.getElementById('result');
 function oppCell(country,round){const o=OPP[country]&&OPP[country][round];if(!o)return '';
   return o.map(name=>`${teamBadge(name,'xs')}<span>${esc(name)}</span>`).join(' / ');}
 function fieldTile(country,item){const rr=String(item.round).padStart(2,'0');
-  if(isBye(item.field))return `<div class="tile bye"><div class="r">ROUND ${rr}</div><div class="opp">Bye — no match</div></div>`;
   const sc=SCORES[country+'@'+item.round];let scoreHTML='';
   if(sc&&sc.gf!=null&&sc.ga!=null){
     const res=sc.gf>sc.ga?'w':(sc.gf<sc.ga?'l':'d');
     const lbl=res==='w'?'WIN':res==='l'?'LOSS':'DRAW';
     scoreHTML=`<div class="scoreline"><span class="res ${res}">${lbl}</span><span class="score-val">${sc.gf}–${sc.ga}</span></div>`;}
+  // LBSST-style comps derive the opponent from the real per-round matchups in the score sheets,
+  // because their schedule uses a single shared field number (field-based opponent detection
+  // would wrongly list every team in the group). Other comps keep the original field logic.
+  const useMatchups=ACTIVE&&ACTIVE.matchupOpponents;
+  if(useMatchups){
+    const opp=MATCHUP[country+'@'+item.round]||(sc&&sc.opp)||'';
+    const hasData=Object.keys(MATCHUP).some(k=>k.slice(0,k.lastIndexOf('@'))===country);
+    if(!opp){
+      // If we have this team's matchups loaded, no matchup = genuine bye; otherwise show loading-safe TBD.
+      return `<div class="tile bye"><div class="r">ROUND ${rr}</div><div class="opp">${hasData?'Bye — no match':'—'}</div></div>`;
+    }
+    const oppHTML=`${teamBadge(opp,'xs')}<span>${esc(opp)}</span>`;
+    const mapBtn=`<span class="fbadge" style="pointer-events:none;opacity:.8">Field ${esc(item.field)}</span>`;
+    return `<div class="tile"><div class="r">ROUND ${rr}</div><div class="opp"><span class="vs">vs</span>${oppHTML}</div>${scoreHTML}${mapBtn}</div>`;
+  }
+  if(isBye(item.field))return `<div class="tile bye"><div class="r">ROUND ${rr}</div><div class="opp">Bye — no match</div></div>`;
   // opponent: prefer the one recorded in the score sheet, else the schedule-derived one
   let oppHTML='';
   if(sc&&sc.opp){oppHTML=`${teamBadge(sc.opp,'xs')}<span>${esc(sc.opp)}</span>`;}
@@ -1352,6 +1368,22 @@ function parseGroupScores(grid){
   for(let r=headerRow+1;r<grid.length;r++){const rd=at(r,roundCol);if(!/^\d+$/.test(rd))continue;
     pairs.forEach(([sa,sb])=>{const home=normTeam(at(r,sa-1)),away=normTeam(at(r,sb+1)),hs=at(r,sa),as=at(r,sb);
       if(home&&away&&isNumStr(hs)&&isNumStr(as))out.push({round:+rd,home,away,hs:+hs,as:+as});});}
+  return out;}
+
+/* Like parseGroupScores, but returns every matchup (home vs away per round) even when
+   the scores are blank. Used to show the correct opponent for not-yet-played rounds. */
+function parseGroupMatchups(grid){
+  const at=(r,c)=>(grid[r]&&grid[r][c]!=null)?String(grid[r][c]).trim():'';
+  let headerRow=-1,roundCol=-1;
+  for(let r=0;r<grid.length&&headerRow<0;r++)for(let c=0;c<(grid[r]||[]).length;c++)
+    if(at(r,c).toLowerCase()==='round'){headerRow=r;roundCol=c;break;}
+  if(headerRow<0)return[];
+  const scoreCols=[];for(let c=0;c<(grid[headerRow]||[]).length;c++)if(at(headerRow,c).toLowerCase()==='score')scoreCols.push(c);
+  const pairs=[];for(let i=0;i+1<scoreCols.length;i+=2)pairs.push([scoreCols[i],scoreCols[i+1]]);
+  const out=[];
+  for(let r=headerRow+1;r<grid.length;r++){const rd=at(r,roundCol);if(!/^\d+$/.test(rd))continue;
+    pairs.forEach(([sa,sb])=>{const home=normTeam(at(r,sa-1)),away=normTeam(at(r,sb+1));
+      if(home&&away)out.push({round:+rd,home,away});});}
   return out;}
 
 /* ============ TKW STANDINGS + BRACKET (single "TKW Standings" sheet) ============ */
@@ -1585,6 +1617,12 @@ async function loadGroupData(){
       if(SCHEDULE[h]&&SCHEDULE[a]){
         SCORES[h+'@'+m.round]={gf:m.hs,ga:m.as,opp:a};
         SCORES[a+'@'+m.round]={gf:m.as,ga:m.hs,opp:h};}});
+    // Capture opponents for EVERY listed matchup (even ones with no score entered yet)
+    parseGroupMatchups(grid).forEach(m=>{
+      const h=resolveTeam(m.home),a=resolveTeam(m.away);
+      if(SCHEDULE[h]&&SCHEDULE[a]){
+        MATCHUP[h+'@'+m.round]=a;
+        MATCHUP[a+'@'+m.round]=h;}});
     // Try pre-formatted standings table first
     let st=(parseStandingsGrid(grid)||[]).filter(r=>SCHEDULE[r.team]);
     // If no standings table, compute from game scores
@@ -1865,7 +1903,7 @@ function selectComp(id){
   ACTIVE=comp;
   // reset state
   SCHEDULE={};TEAMS=[];INDEX=[];COUNTRY2TEAM={};OPP={};
-  SCORES={};QUAL_STANDINGS={};LAST_UPDATED=null;
+  SCORES={};QUAL_STANDINGS={};LAST_UPDATED=null;MATCHUP={};
   GROUPS_LOADING=false;lastChoice=null;
   if(GROUPS_TIMER){clearInterval(GROUPS_TIMER);GROUPS_TIMER=null;}
   BRACKET_DATA=null;GPLAY_DATA=null;TKW_GROUPS=[];TKW_BRACKET=null;TKW_WILD=null;
