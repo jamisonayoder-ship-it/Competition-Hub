@@ -332,7 +332,7 @@ footer{margin-top:60px;border-top:1px solid var(--line);background:#fff}
 </svg>
         <div class="card-name">Stan's Game</div>
         <div class="card-sub">College Cup</div>
-        <div class="card-meta">50 teams · 5 groups · 16-team knockout</div>
+        <div class="card-meta">4 groups · 16-team knockout</div>
       </button>
       <button class="comp-card" onclick="selectComp('club')">
         <svg class="card-icon" viewBox="0 0 100 128" width="80" height="102" xmlns="http://www.w3.org/2000/svg">
@@ -563,23 +563,22 @@ const COMPETITIONS={
   },
   college:{
     id:'college',name:"Stan's Game",subtitle:'College Cup',
-    tagline:'50 teams · 5 groups · 16-team knockout · one champion',showTicker:true,
+    tagline:'4 groups · 16-team knockout · one champion',showTicker:true,
     sheetId:'',
-    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:10,
-    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=422272405&single=true&output=csv',
-    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=1674664057&single=true&output=csv',
-    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=1775683329&single=true&output=csv',
+    rosterTab:'Teams',schedTab:'Team Schedules',minSchedule:8,
+    rosterPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=422272405&single=true&output=csv',
+    schedPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1674664057&single=true&output=csv',
+    tkwBoardPubUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1775683329&single=true&output=csv',
     bracketSize:16,hasFieldMap:true,noFlags:true,
     groupScoreUrls:[
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=990636671&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=745226655&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=416796128&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=232746325&single=true&output=csv',
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjZ9tjzUm1oHhtUdc4R9u4otABMe7gCWg4T4wWXNgakWo9Xdad6T6i159-w6OLKv92FC694WW0u91/pub?gid=1765770352&single=true&output=csv'
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1848895584&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=530080940&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1505993169&single=true&output=csv',
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSUMIYS3Ke95Gwhp2r3LXabsskg5tJpW5VlLQ3krPwAVBJUTebtsMwXLXIcOQ4pRMcoLx9zuDICTHG1/pub?gid=1879736406&single=true&output=csv'
     ],
-    stats:[{label:'Teams',n:50},{label:'Groups',n:5},{label:'Rounds',n:20},{label:'Champion',s:'1'}],
+    stats:[{label:'Groups',n:4},{label:'Knockout',s:'16'},{label:'Champion',s:'1'}],
     qualEyebrow:'Group Stage · Live Standings',
-    qualNote:'Running standings across the group play rounds for all 5 groups.',
+    qualNote:'Running standings across the group play rounds for all 4 groups.',
     finderEyebrow:"Group Stage · Stan's Game · College Cup",
     koNote:'The Wild Card Race decides the final knockout spots. Teams advance into a 16-team single-elimination knockout: Round of 16 → Quarterfinals → Semifinals → the Final.',
     timeline:[
