@@ -1527,11 +1527,12 @@ function renderTKWStandings(){
   const host=document.getElementById('qualStandings');if(!host)return;
   const status=document.getElementById('qualStatus'),upd=document.getElementById('qualUpd');
   if(!TKW_GROUPS.length){host.innerHTML='<div class="ko-empty">Loading groups…</div>';if(status)status.textContent='Connecting…';return;}
-  if(status)status.textContent=`${TKW_GROUPS.length} of 5 groups connected.`;
+  if(status)status.textContent=`${TKW_GROUPS.length} group${TKW_GROUPS.length===1?'':'s'} connected.`;
   if(upd)upd.textContent=LAST_UPDATED?('Updated '+LAST_UPDATED.toLocaleTimeString()+' · auto‑refreshes every 60s'):'Auto‑refreshes every 60s';
   host.innerHTML=TKW_GROUPS.map(g=>{
     const rows=g.rows.map((r,i)=>`<tr><td class="team"><span class="pos">${esc(r.rank||String(i+1))}</span>${teamBadge(r.team,'xs')} ${esc(r.team)}</td><td class="pts">${esc(r.pts)}</td><td>${/^\d+$/.test(r.gd)&&+r.gd>0?'+':''}${esc(r.gd)}</td></tr>`).join('');
-    return `<div class="gcard"><h4>${esc(g.name)}</h4><table class="gtable"><thead><tr><th class="team">Team</th><th>PTS</th><th>GD</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    const heading=g.displayName||g.name;
+    return `<div class="gcard"><h4>${esc(heading)}</h4><table class="gtable"><thead><tr><th class="team">Team</th><th>PTS</th><th>GD</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }).join('');
 }
 async function loadTKWBoard(){
@@ -1542,16 +1543,17 @@ async function loadTKWBoard(){
     // LBSST: standings live in 7 separate per-field workbooks; bracket lives on the board sheet.
     const fieldUrls=ACTIVE.groupScoreUrls||[];
     const groups=[];
-    await Promise.all(fieldUrls.map(async(fu)=>{
+    await Promise.all(fieldUrls.map(async(fu,idx)=>{
+      const fieldNo=idx+1;  // config order is Field 1 .. Field N
       try{const r=await fetch(fu,{cache:'no-store'});
         if(r.ok){const t=await r.text();
           if(!t.trim().startsWith('<!')){
             const parsed=parseTKWStandingsGroups(parseCSV(t));
-            parsed.groups.forEach(g=>groups.push(g));
+            parsed.groups.forEach(g=>{g.field=fieldNo;g.displayName='Field '+fieldNo;groups.push(g);});
           }}}catch(e){}
     }));
     if(groups.length){
-      groups.sort((a,b)=>(parseInt((a.name.match(/\d+/)||['99'])[0],10))-(parseInt((b.name.match(/\d+/)||['99'])[0],10)));
+      groups.sort((a,b)=>(a.field||99)-(b.field||99));
       TKW_GROUPS=groups;
     }
     TKW_WILD=null;
